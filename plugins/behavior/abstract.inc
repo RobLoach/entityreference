@@ -59,6 +59,13 @@ interface EntityReference_BehaviorHandler {
   public function validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors);
 
   /**
+   * Process form errors.
+   *
+   * @see _field_invoke()
+   */
+  public function form_errors($entity_type, $entity, $field, $instance, $langcode, $items, $form, &$form_state);
+
+  /**
    * Act on presaving an entity reference field.
    *
    * @see hook_field_presave()
@@ -173,6 +180,8 @@ abstract class EntityReference_BehaviorHandler_Abstract implements EntityReferen
   public function is_empty_alter(&$empty, $item, $field) {}
 
   public function validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {}
+
+  public function form_errors($entity_type, $entity, $field, $instance, $langcode, $items, $form, &$form_state) {}
 
   public function presave($entity_type, $entity, $field, $instance, $langcode, &$items) {}
 

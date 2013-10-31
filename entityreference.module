@@ -238,6 +238,21 @@ function entityreference_field_validate($entity_type, $entity, $field, $instance
 }
 
 /**
+ * Transfer field-level validation errors to widgets.
+ *
+ * @see field_default_form_errors()
+ */
+function entityreference_field_form_errors($entity_type, $entity, $field, $instance, $langcode, $items, $form, &$form_state) {
+  // Invoke the behaviors.
+  foreach (entityreference_get_behavior_handlers($field, $instance) as $handler) {
+    $handler->form_errors($entity_type, $entity, $field, $instance, $langcode, $items, $form, $form_state);
+  }
+
+  field_default_form_errors($entity_type, $entity, $field, $instance, $langcode, $items, $form, $form_state);
+
+}
+
+/**
  * Implements hook_field_presave().
  *
  * Adds the target type to the field data structure when saving.

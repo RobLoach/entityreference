@@ -59,8 +59,9 @@ interface EntityReference_BehaviorHandler {
   public function validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors);
 
   /**
-   * Process form errors.
+   * Transfer field-level validation errors to widgets.
    *
+   * @see field_default_form_errors()
    * @see _field_invoke()
    */
   public function form_errors($entity_type, $entity, $field, $instance, $langcode, $items, $form, &$form_state);
